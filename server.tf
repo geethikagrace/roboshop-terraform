@@ -19,7 +19,7 @@ provisioner "remote-exec" {
     type     = "ssh"
     user     = "centos"
     password = "DevOps321"
-    host     = aws_instance.instance.private_ip
+    host     = self.private_ip
   }
 
   inline = [
