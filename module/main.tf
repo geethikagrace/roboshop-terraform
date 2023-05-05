@@ -11,6 +11,7 @@ resource "aws_instance" "instance" {
 resource "null_resource" "provisioner" {
 
   depends_on = [aws_instance.instance, aws_route53_record.records]
+
   provisioner "remote-exec" {
 
     connection {
@@ -22,7 +23,7 @@ resource "null_resource" "provisioner" {
 
     inline = [
       "rm -rf roboshop-shell",
-      "git clone https://github.com/raghudevopsb72/roboshop-shell",
+      "git clone https://github.com/geethikagrace/roboshop-shell",
       "cd roboshop-shell",
       "sudo bash ${var.component_name}.sh ${var.password}"
     ]
@@ -32,7 +33,7 @@ resource "null_resource" "provisioner" {
 
 resource "aws_route53_record" "records" {
   zone_id = "Z08612761ONC1YALZWU0L"
-  name    = "${var.component_name}-dev.rdevopsb72.online"
+  name    = "${var.component_name}-dev.sonydevops.online"
   type    = "A"
   ttl     = 30
   records = [aws_instance.instance.private_ip]
