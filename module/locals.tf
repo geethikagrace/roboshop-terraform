@@ -1,6 +1,6 @@
 locals {
   name = var.env != "" ? "${var.component_name}-${var.env}" : var.component_name
-  db_commands=[
+  db_commands = [
   "rm -rf roboshop-shell",
   "git clone https://github.com/geethikagrace/roboshop-shell",
   "cd roboshop-shell",

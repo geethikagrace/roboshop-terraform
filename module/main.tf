@@ -3,7 +3,6 @@ resource "aws_instance" "instance" {
   instance_type          = var.instance_type
   vpc_security_group_ids = [data.aws_security_group.allow-all.id]
   iam_instance_profile   = aws_iam_instance_profile.instance_profile.name
-
   tags = {
     Name = local.name
   }
