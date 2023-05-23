@@ -72,23 +72,23 @@ resource "aws_iam_role_policy" "ssm-ps-policy" {
   role = aws_iam_role.role.id
 
   policy = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
-      {
-        "Sid": "VisualEditor0",
-        "Effect": "Allow",
-        "Action": [
-          "kms:Decrypt",
-          "ssm:GetParameterHistory",
-          "ssm:GetParametersByPath",
-          "ssm:GetParameters",
-          "ssm:GetParameter"
-        ],
-        "Resource": [
-          "arn:aws:ssm:us-east-1:838594267872:parameter/${var.env}.${var.component_name}.*",
-          "arn:aws:kms:us-east-1:838594267872:key/b24b0646-42c1-422c-ba99-bb9db96b3637"
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+              "kms:Encrypt",
+              "ssm:GetParameterHistory",
+              "ssm:GetParametersByPath",
+              "ssm:GetParameters",
+              "ssm:GetParameter"
+            ],
+            "Resource": [
+              "arn:aws:ssm:us-east-1:838594267872:parameter/dev.frontend.*",
+              "arn:aws:kms:us-east-1:838594267872:key/arn:aws:kms:us-east-1:838594267872:key/b24b0646-42c1-422c-ba99-bb9db96b3637"
+            ]
+          }
         ]
-      }
-    ]
-  })
-}
+     })
+   }
