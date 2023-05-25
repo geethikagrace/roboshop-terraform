@@ -15,6 +15,7 @@ resource "null_resource" "provisioner" {
     private_ip = aws_instance.instance.private_ip
   }
 
+
   provisioner "remote-exec" {
 
     connection {
