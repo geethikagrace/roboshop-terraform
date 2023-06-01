@@ -13,8 +13,8 @@ locals {
   db_tags = {
     Name = "${var.component_name}-${var.env}"
   }
-  apps_tags = {
+  app_tags = {
     Name = "${var.component_name}-${var.env}"
-    monitor = "true"
+    Monitor = "true"
   }
 }
