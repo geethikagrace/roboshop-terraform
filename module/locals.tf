@@ -10,11 +10,11 @@ locals {
     "sudo labauto ansible",
     "ansible-pull -i localhost, -U https://github.com/geethikagrace/roboshop-ansible roboshop.yml -e env=${var.env} -e role_name=${var.component_name}"
   ]
-#  db_tags = {
-#    Name = "${var.component_name}-${var.env}"
-#  }
-#  apps_tags = {
-#    Name = "${var.component_name}-${var.env}"
-#    monitor = "true"
-#  }
+  db_tags = {
+    Name = "${var.component_name}-${var.env}"
+  }
+  apps_tags = {
+    Name = "${var.component_name}-${var.env}"
+    monitor = "true"
+  }
 }
