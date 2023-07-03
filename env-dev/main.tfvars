@@ -4,6 +4,8 @@ default_vpc_id = "vpc-0f5c2199ac552becb"
 default_vpc_cidr ="172.31.0.0/16"
 default_vpc_rtid = "rtb-0001996bd71440d5b"
 kms_arn = "arn:aws:kms:us-east-1:838594267872:key/635d16bd-ca1e-4957-ab88-1a68a3cd1cb7"
+domain_name = "sonydevops.online"
+domain_id = "Z08612761ONC1YALZWU0L"
 vpc = {
   main = {
     cidr_block = "10.0.0.0/16"
@@ -42,6 +44,8 @@ app = {
     max_size         = 10
     min_size         = 1
     app_port         = 80
+    listener_priority= 1
+    lb_type          = "public"
 
   }
   catalogue = {
@@ -53,6 +57,9 @@ app = {
     max_size         = 10
     min_size         = 1
     app_port         = 8080
+    listener_priority= 1
+    lb_type          = "private"
+
 
   }
   #  cart = {
