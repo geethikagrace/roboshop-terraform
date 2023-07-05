@@ -139,7 +139,7 @@ depends_on = [module.vpc, module.docdb, module.rds, module.elasticache, module.r
     bastion_cidr      = var.bastion_cidr
     tags              = local.tags
     domain_name       = var.domain_name
-    domain_id         = var.domain_id
+  zone_id             = var.zone_id
     kms_arn           = var.kms_arn
 }
 
