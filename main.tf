@@ -36,7 +36,7 @@ module "docdb" {
 
 }
 
-module rds {
+module "rds" {
   source = "git::https://github.com/geethikagrace/tf-module-rds.git"
 
   for_each     = var.rds
@@ -47,10 +47,12 @@ module rds {
   instance_class =each.value["instance_class"]
 
 
+
   tags         = local.tags
   env          = var.env
   vpc_id       = local.vpc_id
   kms_arn      = var.kms_arn
+
 
 
 }
@@ -78,7 +80,7 @@ module "elasticache" {
 
 
 
-module rabbitmq {
+module "rabbitmq" {
   source = "git::https://github.com/geethikagrace/tf-module-amazon-mq.git"
 
   for_each         = var.rabbitmq
@@ -94,16 +96,17 @@ module rabbitmq {
   vpc_id           = local.vpc_id
   kms_arn          = var.kms_arn
   bastion_cidr     =var.bastion_cidr
+  zone_id          = var.zone_id
 
 
 }
 
-module alb {
+module "alb" {
   source = "git::https://github.com/geethikagrace/tf-module-alb.git"
 
   for_each         = var.alb
   subnets          =  lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnet_ids", null)
-  allow_alb_cidr   = each.value["name"] == "public" ? ["0.0.0.0/0"] : lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["allow_alb_cidr"], null), "subnet_cidrs", null)
+  allow_alb_cidr   = each.value["name"] == "public" ? ["0.0.0.0/0"] : concat(lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["allow_alb_cidr"], null), "subnet_cidrs", null) , lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), "app", null), "subnet_cidrs", null))
   name             = each.value["name"]
   internal         = each.value["internal"]
 
