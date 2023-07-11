@@ -145,6 +145,7 @@ depends_on = [module.vpc, module.docdb, module.rds, module.elasticache, module.r
     domain_name       = var.domain_name
     zone_id           = var.zone_id
     kms_arn           = var.kms_arn
+    monitor_cidr      =var.monitor_cidr
 }
 
 
