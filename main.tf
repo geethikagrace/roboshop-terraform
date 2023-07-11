@@ -141,7 +141,7 @@ depends_on = [module.vpc, module.docdb, module.rds, module.elasticache, module.r
 
     env               = var.env
     bastion_cidr      = var.bastion_cidr
-    tags              = local.tags
+    tags              = merge(local.tags, {monitor = "true"})
     domain_name       = var.domain_name
     zone_id           = var.zone_id
     kms_arn           = var.kms_arn
