@@ -20,11 +20,18 @@ pipeline{
      }
    }
 
- stage ('terraform Apply'){
-   steps{
-    sh 'terraform apply -auto-approve -var-file=env-${env}/main.tfvars'
-    }
-  }
+//  stage ('terraform Apply'){
+//    steps{
+//     sh 'terraform apply -auto-approve -var-file=env-${env}/main.tfvars'
+//     }
+//   }
+
+  stage (' Terraform destroy'){
+
+      steps{
+      sh 'terraform destroy'
+       }
+     }
  }
 
 post{
