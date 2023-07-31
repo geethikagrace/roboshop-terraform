@@ -23,24 +23,19 @@ pipeline{
    }
 
 
-//  stage ('terraform Apply'){
-//    steps{
-//     sh 'terraform apply -auto-approve -var-file=env-${env}/main.tfvars'
-//     }
-//   }
+ stage ('terraform Apply'){
+   steps{
+    sh 'terraform apply -auto-approve -var-file=env-${env}/main.tfvars'
+    }
+  }
 
-//   stage (' Terraform destroy'){
-//
-//       steps{
-//       sh 'terraform destroy -var-file=env-${env}/main.tfvar'
-//        }
-//      }
-stage('terraform  action') {
-            steps {
-                echo "Terraform action is --> ${action}"
-                sh ('terraform ${action} -auto-approve -var-file=env-${env}/main.tfvars')
-            }
-        }
+
+// stage('terraform  action') {
+//             steps {
+//                 echo "Terraform action is --> ${action}"
+//                 sh ('terraform ${action} -auto-approve -var-file=env-${env}/main.tfvars')
+//             }
+//         }
  }
 
 post{
