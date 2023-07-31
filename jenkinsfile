@@ -29,7 +29,7 @@ pipeline{
   stage (' Terraform destroy'){
 
       steps{
-      sh 'terraform destroy'
+      sh 'terraform destroy -var-file=env-${env}/main.tfvar'
        }
      }
  }
