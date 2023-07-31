@@ -1,17 +1,19 @@
 pipeline{
-agent{
-node{
-  label 'workstation'
+
+
+  agent{
+    node{
+          label 'workstation'
  }
  }
 
  parameters {
- choice(name: 'env', choices: ['dev', 'prod'], description: 'environment choice')
+ choice(name: 'env', choices: ['dev', 'prod'], description: 'choose environment ')
  }
 
 
  stages{
-  stage ('terraform Init'){
+  stage (' Terraform Init'){
 
     steps{
     sh 'terraform init -backend-config=env-${env}/state.tfvars'
