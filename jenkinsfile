@@ -14,20 +14,20 @@ pipeline{
  }
 
 
- stages{
-  stage (' Terraform Init'){
-
-    steps{
-    sh 'terraform init -backend-config=env-${env}/state.tfvars'
-     }
-   }
-
-
- stage ('terraform Apply'){
-   steps{
-    sh 'terraform apply -auto-approve -var-file=env-${env}/main.tfvars'
-    }
-  }
+//  stages{
+//   stage (' Terraform Init'){
+//
+//     steps{
+//     sh 'terraform init -backend-config=env-${env}/state.tfvars'
+//      }
+//    }
+//
+//
+//  stage ('terraform Apply'){
+//    steps{
+//     sh 'terraform apply -auto-approve -var-file=env-${env}/main.tfvars'
+//     }
+//   }
 
 
 // stage('terraform  action') {
@@ -36,7 +36,7 @@ pipeline{
 //                 sh ('terraform ${action} -auto-approve -var-file=env-${env}/main.tfvars')
 //             }
 //         }
- }
+//  }
 
 post{
  always {
